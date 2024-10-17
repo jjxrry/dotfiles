@@ -1,0 +1,5 @@
+return {
+  {
+    'bfredl/nvim-ipy',
+  },
+}
