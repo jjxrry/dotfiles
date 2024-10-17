@@ -198,8 +198,8 @@ if vim.api.nvim_exec('echo argc()', true) == '0' then
     type = 'group',
     val = {
       button('e', '󰈬  Explorer', 'DiagnosticSignError', ':Ex<CR>'),
-      button('f', '  Find file', 'DiagnosticSignWarn', ':Telescope find_files<CR>'),
-      button('r', '  Recently opened files', 'DiagnosticSignInfo', ':Telescope oldfiles<CR>'),
+      button('f', '󰈬  Find file', 'DiagnosticSignWarn', ':Telescope find_files<CR>'),
+      button('r', '󰈬  Recently opened files', 'DiagnosticSignInfo', ':Telescope oldfiles<CR>'),
       button('p', '  Projects', 'DiagnosticSignHint', ':Telescope marks<CR>'),
       button('m', '  Mason', 'DiagnosticSignOk', ':Mason<CR>'),
     },
