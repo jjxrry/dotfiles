@@ -170,6 +170,8 @@ vim.opt.shiftwidth = 4
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 vim.keymap.set('n', '<leader>m', ':Ex<CR>')
 
+vim.keymap.set('n', '<leader>b', ':b#<CR>')
+
 -- Diagnostic keymaps
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
 
@@ -247,12 +249,10 @@ require('lazy').setup({
   -- NOTE: Plugins can be added with a link (or for a github repo: 'owner/repo' link).
   --  'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
   { import = 'custom.plugins' },
-  {
-    'mbbill/undotree',
-  },
-  {
-    'onsails/lspkind.nvim',
-  },
+  { 'mbbill/undotree' },
+  { 'onsails/lspkind.nvim' },
+  { 'rafamadriz/friendly-snippets' },
+  { 'nvim-tree/nvim-web-devicons', enabled = vim.g.have_nerd_font },
   -- {
   --   'JoosepAlviste/nvim-ts-context-commentstring',
   --   config = function()

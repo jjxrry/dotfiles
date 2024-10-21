@@ -141,6 +141,17 @@ return {
       local servers = {
         clangd = {},
         pyright = {},
+        pylsp = {
+          settings = {
+            pylsp = {
+              plugins = {
+                pycodestyle = {
+                  maxLineLength = 150,
+                },
+              },
+            },
+          },
+        },
         ts_ls = {},
         jdtls = {},
         html = {},
@@ -219,6 +230,7 @@ return {
         'html',
         'eslint-lsp',
         'emmet-language-server',
+        'vue-language-server',
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
