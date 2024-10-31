@@ -49,19 +49,18 @@ return {
   --     require('nightfox').setup {
   --       variant = 'nightfox',
   --     }
-  --     -- Load the colorscheme
   --     vim.cmd.colorscheme 'nightfox'
   --   end,
   -- },
-  -- {
-  --   'sainnhe/gruvbox-material',
-  --   lazy = false,
-  --   priority = 1000,
-  --   config = function()
-  --     vim.g.gruvbox_material_enable_italic = true
-  --     vim.cmd.colorscheme 'gruvbox-material'
-  --   end,
-  -- },
+  {
+    'sainnhe/gruvbox-material',
+    lazy = false,
+    priority = 1000,
+    config = function()
+      vim.g.gruvbox_material_enable_italic = true
+      vim.cmd.colorscheme 'gruvbox-material'
+    end,
+  },
   -- {
   --   'sainnhe/everforest',
   --   lazy = false,
@@ -72,16 +71,16 @@ return {
   --     vim.cmd.colorscheme 'everforest'
   --   end,
   -- },
-  {
-    'sainnhe/edge',
-    lazy = false,
-    priority = 1000,
-    config = function()
-      vim.g.edge_style = 'aura'
-      vim.g.edge_enable_italic = true
-      vim.cmd.colorscheme 'edge'
-    end,
-  },
+  -- {
+  --   'sainnhe/edge',
+  --   lazy = false,
+  --   priority = 1000,
+  --   config = function()
+  --     vim.g.edge_style = 'aura'
+  --     vim.g.edge_enable_italic = true
+  --     vim.cmd.colorscheme 'edge'
+  --   end,
+  -- },
   -- {
   --   'sainnhe/sonokai',
   --   lazy = false,
