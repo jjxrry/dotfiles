@@ -11,11 +11,11 @@ return {
       },
     },
   },
-  {
-    'pmizio/typescript-tools.nvim',
-    dependencies = { 'nvim-lua/plenary.nvim', 'neovim/nvim-lspconfig' },
-    opts = {},
-  },
+  -- {
+  --   'pmizio/typescript-tools.nvim',
+  --   dependencies = { 'nvim-lua/plenary.nvim', 'neovim/nvim-lspconfig' },
+  --   opts = {},
+  -- },
   { 'Bilal2453/luvit-meta', lazy = true },
   {
     -- Main LSP Configuration
@@ -32,6 +32,13 @@ return {
 
       -- Allows extra capabilities provided by nvim-cmp
       'hrsh7th/cmp-nvim-lsp',
+      -- Ensure nvim-cmp and its dependencies are installed
+      'hrsh7th/nvim-cmp',
+      'L3MON4D3/LuaSnip',
+      'saadparwaiz1/cmp_luasnip',
+      'hrsh7th/cmp-buffer',
+      'hrsh7th/cmp-path',
+      'hrsh7th/cmp-cmdline',
     },
     config = function()
       vim.api.nvim_create_autocmd('LspAttach', {
@@ -148,13 +155,36 @@ return {
                 pycodestyle = {
                   maxLineLength = 150,
                 },
+                mccabe = {
+                  enabled = false,
+                },
               },
             },
           },
         },
-        ts_ls = {},
+        ts_ls = { -- Add ts_ls here
+          capabilities = capabilities,
+          settings = {
+            javascript = {
+              inlayHints = {
+                parameterNames = {
+                  enabled = 'all',
+                },
+              },
+            },
+            typescript = {
+              inlayHints = {
+                parameterNames = {
+                  enabled = 'all',
+                },
+              },
+            },
+          },
+        },
         jdtls = {},
-        html = {},
+        html = {
+          capabilities = capabilities,
+        },
         prettier = {},
         emmet_language_server = {
           capabilities = capabilities,
@@ -229,22 +259,25 @@ return {
         'jdtls', -- Java language server
         'html',
         'eslint-lsp',
+        'eslint_d',
         'emmet-language-server',
         'vue-language-server',
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
       require('mason-lspconfig').setup {
-        handlers = {
-          function(server_name)
-            local server = servers[server_name] or {}
-            -- This handles overriding only values explicitly passed
-            -- by the server configuration above. Useful when disabling
-            -- certain features of an LSP (for example, turning off formatting for ts_ls)
-            server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
-            require('lspconfig')[server_name].setup(server)
-          end,
-        },
+        automatic_installation = true,
+      }
+
+      require('mason-lspconfig').setup_handlers {
+        function(server_name)
+          local server = servers[server_name] or {}
+          -- This handles overriding only values explicitly passed
+          -- by the server configuration above. Useful when disabling
+          -- certain features of an LSP (for example, turning off formatting for ts_ls)
+          server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
+          require('lspconfig')[server_name].setup(server)
+        end,
       }
     end,
   },

@@ -1,5 +1,5 @@
 local function pwd()
-  local cwd = vim.fn.getcwd()
+  local cwd = vim.fn.expand '%:p:h'
   local file = vim.fn.expand '%:t'
   cwd = cwd:gsub('^/Users/jerrygao/', '', 2)
   return cwd .. '/' .. file
