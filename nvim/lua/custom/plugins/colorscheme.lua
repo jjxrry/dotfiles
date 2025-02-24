@@ -52,15 +52,15 @@ return {
   --     vim.cmd.colorscheme 'nightfox'
   --   end,
   -- },
-  {
-    'sainnhe/gruvbox-material',
-    lazy = false,
-    priority = 1000,
-    config = function()
-      vim.g.gruvbox_material_enable_italic = true
-      vim.cmd.colorscheme 'gruvbox-material'
-    end,
-  },
+  -- {
+  --   'sainnhe/gruvbox-material',
+  --   lazy = false,
+  --   priority = 1000,
+  --   config = function()
+  --     vim.g.gruvbox_material_enable_italic = true
+  --     vim.cmd.colorscheme 'gruvbox-material'
+  --   end,
+  -- },
   -- {
   --   'sainnhe/everforest',
   --   lazy = false,
@@ -91,4 +91,41 @@ return {
   --     vim.cmd.colorscheme 'sonokai'
   --   end,
   -- },
+  -- {
+  --   'wtfox/jellybeans.nvim',
+  --   priority = 1000,
+  --   config = function()
+  --     require('jellybeans').setup()
+  --     vim.cmd.colorscheme 'jellybeans'
+  --   end,
+  -- },
+  {
+    '0xstepit/flow.nvim',
+    lazy = false,
+    priority = 1000,
+    tag = 'v2.0.1',
+    opts = {
+      theme = {
+        style = 'dark', --  "dark" | "light"
+        contrast = 'high', -- "default" | "high"
+        transparent = false, -- true | false
+      },
+      colors = {
+        mode = 'dark', -- "default" | "dark" | "light"
+        fluo = 'pink', -- "pink" | "cyan" | "yellow" | "orange" | "green"
+        custom = {
+          saturation = '75', -- "" | string representing an integer between 0 and 100
+          light = '82', -- "" | string representing an integer between 0 and 100
+        },
+      },
+      ui = {
+        borders = 'theme', -- "theme" | "inverse" | "fluo" | "none"
+        aggressive_spell = false, -- true | false
+      },
+    },
+    config = function(_, opts)
+      require('flow').setup(opts)
+      vim.cmd 'colorscheme flow'
+    end,
+  },
 }

@@ -148,20 +148,20 @@ return {
       local servers = {
         clangd = {},
         pyright = {},
-        pylsp = {
-          settings = {
-            pylsp = {
-              plugins = {
-                pycodestyle = {
-                  maxLineLength = 150,
-                },
-                mccabe = {
-                  enabled = false,
-                },
-              },
-            },
-          },
-        },
+        -- pylsp = {
+        --   settings = {
+        --     pylsp = {
+        --       plugins = {
+        --         pycodestyle = {
+        --           maxLineLength = 150,
+        --         },
+        --         mccabe = {
+        --           enabled = false,
+        --         },
+        --       },
+        --     },
+        --   },
+        -- },
         ts_ls = { -- Add ts_ls here
           capabilities = capabilities,
           settings = {
@@ -238,6 +238,7 @@ return {
             },
           },
         },
+        zls = {},
       }
 
       -- Ensure the servers and tools above are installed
@@ -254,7 +255,7 @@ return {
       vim.list_extend(ensure_installed, {
         'stylua', -- Used to format Lua code
         'typescript-language-server', -- TypeScript/JavaScript language server
-        'python-lsp-server', -- Python language server
+        -- 'python-lsp-server', -- Python language server
         'clangd', -- C/C++ language server
         'jdtls', -- Java language server
         'html',
