@@ -24,6 +24,9 @@ NEWLINE=$'\n'
 setopt PROMPT_SUBST
 export PROMPT='${COLOR_USR} %n ${COLOR_DIR}%d ${COLOR_GIT}$(parse_git_branch)${COLOR_DEF}${NEWLINE}%% '
 
+export VOLTA_HOME="$HOME/.volta"
+export PATH="$VOLTA_HOME/bin:$PATH"
+
 export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin" 
 
 alias gm='git fetch && git pull'

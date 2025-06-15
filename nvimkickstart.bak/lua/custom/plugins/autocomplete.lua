@@ -164,7 +164,7 @@ return { -- Autocompletion
       -- C-k: Toggle signature help (if signature.enabled = true)
       --
       -- See :h blink-cmp-config-keymap for defining your own keymap
-      keymap = { preset = 'default' },
+      keymap = { preset = 'default', ['<C-m>'] = { 'select_prev', 'fallback' }, ['<CR>'] = { 'hide', 'fallback' } },
 
       appearance = {
         -- 'mono' (default) for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
