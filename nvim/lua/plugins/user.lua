@@ -23,6 +23,7 @@ return {
     "folke/snacks.nvim",
     opts = {
       dashboard = {
+        -- need to nest in preset to override defaults
         preset = {
           header = table.concat({
       '⠀⣼⣿⣿⣿⣿⣿⣿⡟⢸⣿⡇⠈⣿⣿⣿⠀⢧⢻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣇⠀⠀⠀⠀⠀⠀⠀⠀',
@@ -42,15 +43,31 @@ return {
       '⠀⢹⠀⣿⣿⡇⣿⣿⣿⣿⣿⠟⠳⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣸⣰⣿⣿⣿⣿⣿⠀⢹⣿⡿⣿⣿⣿⠟⠁⣼⠁⣸⠚⠉⠁⠀⠀⠀⠀⣠⠴⠋⠁⠀⠀',
       '⠀⠈⢳⣸⣿⡇⢻⣿⣿⣿⣿⣦⠀⢸⡷⣄⠀⠀⣀⣀⡤⢶⡋⠁⢨⢹⣿⣿⣿⣿⡇⠀⠸⣿⣧⣿⡿⠁⠀⢸⠃⢠⡇⠀⠀⠀⠀⢀⡴⠚⠁⠀⠀⠀⠀⠀',
 
-          }, "\n"),
+        }, "\n"),
           keys = {
-            { icon = "󰈞 ", key = "f", desc = "Find File", action = ":Telescope find_files" },
-            { icon = "󰊄 ", key = "g", desc = "Find Text", action = ":Telescope grep_string" },
+            { icon = "󰙅 ", key = "e", desc = "Explorer", action = ":Neotree" },
+            { icon = " ", key = "f", desc = "Find File", action = ":Telescope find_files" },
+            { icon = "󰱽 ", key = "g", desc = "Grep", action = ":Telescope live_grep" },
             { icon = "󰄉 ", key = "r", desc = "Recent Files", action = ":Telescope oldfiles" },
             { icon = "󰒲 ", key = "l", desc = "Lazy", action = ":Lazy" },
             { icon = "󱌢 ", key = "m", desc = "Mason", action = ":Mason" },
             { icon = "󰆍 ", key = "q", desc = "Quit", action = ":qa" },
           },
+        },
+        sections = {
+          { section = "header", padding = 4 },
+          { icon = " ", title = "Keymaps", section = "keys", indent = 2, padding = 2 },
+          { icon = " ", title = "Recent Files", section = "recent_files", indent = 2, padding = 2 },
+          { icon = " ", title = "Projects", section = "projects", indent = 2, padding = 2 },
+          { section = "startup" },
+          -- {
+          --   section = "terminal",
+          --   cmd = "pokemon-colorscripts -r --no-title; sleep .1",
+          --   random = 10,
+          --   pane = 2,
+          --   indent = 4,
+          --   height = 30,
+          -- },
         },
       },
     },
@@ -174,13 +191,13 @@ return {
       vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
 
       -- Slightly advanced example of overriding default behavior and theme
-      vim.keymap.set('n', '<leader>/', function()
-        -- You can pass additional configuration to Telescope to change the theme, layout, etc.
-        builtin.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
-          winblend = 10,
-          previewer = false,
-        })
-      end, { desc = '[/] Fuzzily search in current buffer' })
+      -- vim.keymap.set('n', '<leader>/', function()
+      --   -- You can pass additional configuration to Telescope to change the theme, layout, etc.
+      --   builtin.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
+      --     winblend = 10,
+      --     previewer = false,
+      --   })
+      -- end, { desc = '[/] Fuzzily search in current buffer' })
 
       -- It's also possible to pass additional configuration options.
       --  See `:help telescope.builtin.live_grep()` for information about particular keys
@@ -195,6 +212,47 @@ return {
       vim.keymap.set('n', '<leader>sn', function()
         builtin.find_files { cwd = vim.fn.stdpath 'config' }
       end, { desc = '[S]earch [N]eovim files' })
+    end,
+  },
+  {
+    'ThePrimeagen/harpoon',
+    branch = 'harpoon2',
+    dependencies = { 'nvim-lua/plenary.nvim' },
+    config = function()
+      local harpoon = require 'harpoon'
+      
+      -- REQUIRED
+      harpoon:setup()
+      -- REQUIRED
+
+      vim.keymap.set('n', '<leader>a', function()
+        harpoon:list():add()
+      end)
+      vim.keymap.set('n', '<C-e>', function()
+        harpoon.ui:toggle_quick_menu(harpoon:list())
+      end)
+
+      vim.keymap.set('n', '<C-h>', function()
+        harpoon:list():select(1)
+      end)
+      -- fix this
+      vim.keymap.set('n', '<C-j>', function()
+        harpoon:list():select(2)
+      end)
+      vim.keymap.set('n', '<C-k>', function()
+        harpoon:list():select(3)
+      end)
+      vim.keymap.set('n', '<C-l>', function()
+        harpoon:list():select(4)
+      end)
+
+      -- Toggle previous & next buffers stored within Harpoon list
+      vim.keymap.set('n', '<C-S-P>', function()
+        harpoon:list():prev()
+      end)
+      vim.keymap.set('n', '<C-S-N>', function()
+        harpoon:list():next()
+      end)
     end,
   },
 }
