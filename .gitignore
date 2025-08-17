@@ -1,3 +1,7 @@
 .git/
 git/
 .DS_Store
+
+configstore/
+opencode/
+simple-update-notifier/
