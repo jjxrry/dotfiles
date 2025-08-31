@@ -41,7 +41,8 @@ alias brel='zsh build-release.sh'
 alias bdebug='zsh build-debug.sh'
 alias brun='zsh build-script.sh && zsh run.sh'
 alias vim='nvim'
-alias toconf='cd ~/.config/'
+alias conf='cd ~/.config/'
+alias dev='cd ~/Users/jerrygao/Development/'
 
 # bun completions
 [ -s "/Users/jerrygao/.bun/_bun" ] && source "/Users/jerrygao/.bun/_bun"
