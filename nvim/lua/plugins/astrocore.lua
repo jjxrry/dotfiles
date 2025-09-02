@@ -43,9 +43,9 @@ return {
         spell = false, -- sets vim.opt.spell
         signcolumn = "yes", -- sets vim.opt.signcolumn to yes
         wrap = true, -- sets vim.opt.wrap
-        scrolloff = 28, -- keep 8 lines visible above/below cursor
+        scrolloff = 18, -- keep 8 lines visible above/below cursor
         -- sidescrolloff = 8, -- keep 8 columns visible left/right of cursor
-        virtualedit = "all", -- allow cursor to move anywhere
+        -- virtualedit = "all", -- allow cursor to move anywhere
         fillchars = {
           eob = " ",
         }, -- show empty lines beyond buffer

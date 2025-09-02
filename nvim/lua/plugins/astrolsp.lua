@@ -38,12 +38,55 @@ return {
     -- enable servers that you already have installed without mason
     servers = {
       -- "rust_analyzer",
-      -- "basedpyright"
+      "basedpyright",
     },
     -- customize language server configuration options passed to `lspconfig`
     ---@diagnostic disable: missing-fields
     config = {
       -- clangd = { capabilities = { offsetEncoding = "utf-8" } },
+      basedpyright = {
+        settings = {
+          basedpyright = {
+            analysis = {
+              typeCheckingMode = "basic", -- or "off" for minimal warnings
+              reportMissingTypeStubs = false,
+              reportUnknownMemberType = false,
+              reportUnknownArgumentType = false,
+              reportUnknownVariableType = false,
+              reportUnknownLambdaType = false,
+              reportMissingParameterType = false,
+              reportMissingTypeArgument = false,
+              reportUntypedFunctionDecorator = false,
+              reportUntypedClassDecorator = false,
+              reportUntypedBaseClass = false,
+              reportUntypedNamedTuple = false,
+              reportPrivateUsage = false,
+              reportConstantRedefinition = false,
+              reportIncompatibleMethodOverride = false,
+              reportIncompatibleVariableOverride = false,
+              reportInconsistentConstructor = false,
+              reportOverlappingOverload = false,
+              reportMissingSuperCall = false,
+              reportUninitializedInstanceVariable = false,
+              reportInvalidStringEscapeSequence = false,
+              reportUnknownParameterType = false,
+              reportImportCycles = false,
+              reportUnusedImport = false,
+              reportUnusedClass = false,
+              reportUnusedFunction = false,
+              reportUnusedVariable = false,
+              reportDuplicateImport = false,
+              reportOptionalSubscript = false,
+              reportOptionalMemberAccess = false,
+              reportOptionalCall = false,
+              reportOptionalIterable = false,
+              reportOptionalContextManager = false,
+              reportOptionalOperand = false,
+              reportTypedDictNotRequiredAccess = false,
+            },
+          },
+        },
+      },
       rust_analyzer = {
         settings = {
           ["rust-analyzer"] = {
