@@ -153,7 +153,7 @@ return {
         transparent = false, -- enable transparent floating windows
         solid = false, -- use solid styling for floating windows, see |winborder|
       },
-      show_end_of_buffer = false, -- shows the '~' characters after the end of buffers
+      show_end_of_buffer = true, -- shows the '~' characters after the end of buffers
       term_colors = false, -- sets terminal colors (e.g. `g:terminal_color_0`)
       dim_inactive = {
         enabled = false, -- dims the background color of inactive window
@@ -210,7 +210,7 @@ return {
         background = "soft",
         ---How much of the background should be transparent. 2 will have more UI
         ---components be transparent (e.g. status line background)
-        transparent_background_level = 0,
+        transparent_background_level = 0.2,
         ---Whether italics should be used for keywords and more.
         italics = false,
         ---Disable italic fonts for comments. Comments are in italics by default, set

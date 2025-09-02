@@ -43,6 +43,12 @@ return {
         spell = false, -- sets vim.opt.spell
         signcolumn = "yes", -- sets vim.opt.signcolumn to yes
         wrap = true, -- sets vim.opt.wrap
+        scrolloff = 28, -- keep 8 lines visible above/below cursor
+        -- sidescrolloff = 8, -- keep 8 columns visible left/right of cursor
+        virtualedit = "all", -- allow cursor to move anywhere
+        fillchars = {
+          eob = " ",
+        }, -- show empty lines beyond buffer
       },
       g = { -- vim.g.<key>
         -- configure global vim variables (vim.g)
@@ -50,6 +56,8 @@ return {
         -- This can be found in the `lua/lazy_setup.lua` file
       },
     },
+    -- Autocmds can be configured here
+    autocmds = {},
     -- Mappings can be configured through AstroCore as well.
     -- NOTE: keycodes follow the casing in the vimdocs. For example, `<Leader>` must be capitalized
     mappings = {
