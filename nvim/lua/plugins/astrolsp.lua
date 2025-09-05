@@ -11,7 +11,7 @@ return {
     -- Configuration table of features provided by AstroLSP
     features = {
       codelens = true, -- enable/disable codelens refresh on start
-      inlay_hints = true, -- enable/disable inlay hints on start
+      inlay_hints = false, -- enable/disable inlay hints on start
       semantic_tokens = true, -- enable/disable semantic token highlighting
     },
     -- customize lsp formatting options
@@ -49,6 +49,7 @@ return {
           basedpyright = {
             analysis = {
               typeCheckingMode = "basic", -- or "off" for minimal warnings
+              reportAttributeAccessIssue = false,
               reportMissingTypeStubs = false,
               reportUnknownMemberType = false,
               reportUnknownArgumentType = false,
@@ -83,6 +84,7 @@ return {
               reportOptionalContextManager = false,
               reportOptionalOperand = false,
               reportTypedDictNotRequiredAccess = false,
+              strictParameterNoneValue = false,
             },
           },
         },

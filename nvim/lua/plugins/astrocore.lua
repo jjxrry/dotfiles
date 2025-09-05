@@ -49,6 +49,9 @@ return {
         fillchars = {
           eob = " ",
         }, -- show empty lines beyond buffer
+        shiftwidth = 2, -- set indent width to 2 spaces
+        tabstop = 2, -- set tab width to 2 spaces
+        softtabstop = 2, -- set soft tab width to 2 spaces
       },
       g = { -- vim.g.<key>
         -- configure global vim variables (vim.g)

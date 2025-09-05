@@ -2,12 +2,6 @@ parse_git_branch() {
     git branch 2> /dev/null | sed -n -e 's/^\* \(.*\)/[\1]/p'
 }
 
-# pyenv setup
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init --path)"
-eval "$(pyenv init -)"
-
 # for case-insensitive autocomplete
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 
@@ -42,7 +36,9 @@ alias bdebug='zsh build-debug.sh'
 alias brun='zsh build-script.sh && zsh run.sh'
 alias vim='nvim'
 alias conf='cd ~/.config/'
-alias dev='cd ~/Users/jerrygao/Development/'
+alias dev='cd ~/Development/'
+alias proj='cd ~/Development/repos/projects/'
+alias oc='opencode'
 
 # bun completions
 [ -s "/Users/jerrygao/.bun/_bun" ] && source "/Users/jerrygao/.bun/_bun"
@@ -51,3 +47,7 @@ alias dev='cd ~/Users/jerrygao/Development/'
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 export PATH="$PATH:/usr/local/mongodb-macos-aarch64-8.0.3/bin"
+
+
+. "$HOME/.local/bin/env"
+
